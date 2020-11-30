@@ -17,4 +17,32 @@ window.onload = function() {
         paddingTop:      '50vh',               // Move content down by 50% of the browser window's height (vertical center)
         backgroundColor: 'rgba(0, 0, 0, 0.5)', // Black color with 50% transparency
     }
+
+    /**
+     * Add Preloader to <body/>
+     *
+     * @returns void
+     * @private
+     */
+    function addPreloader()
+    {
+        // Preloader Container
+        let preloaderContainer = document.createElement('div');
+        preloaderContainer.id  = 'preloader'
+        for (let property in preloaderStyle) {
+            preloaderContainer.style[property] = preloaderStyle[property];
+        }
+
+        // Spinner
+        let preloaderSpinner = document.createElement('span');
+        preloaderSpinner.classList.add('fa');      // Font-Awesome CSS class
+        preloaderSpinner.classList.add('fa-cog');  // Font-Awesome CSS class for a gear icon
+        preloaderSpinner.classList.add('fa-spin'); // Font-Awesome CSS class for a spinning animation
+
+        // Add spinner to the container
+        preloaderContainer.append(preloaderSpinner);
+
+        // Add preloader to <body/>
+        document.body.insertAdjacentElement('afterbegin', preloaderContainer);
+    }
 }
