@@ -45,4 +45,17 @@ window.onload = function() {
         // Add preloader to <body/>
         document.body.insertAdjacentElement('afterbegin', preloaderContainer);
     }
+
+    /**
+     * Removes Preloader from <body/>
+     *
+     * @returns void
+     * @private
+     */
+    function removePreloader()
+    {
+        document.body.removeChild(
+            document.querySelector('#preloader')
+        );
+    }
 }
