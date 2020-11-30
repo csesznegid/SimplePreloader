@@ -88,4 +88,13 @@ window.onload = function() {
 
         return responseData;
     }
+
+    // Get a Chuck Norris joke, when the button is clicked
+    document.querySelector('#btn-norris').addEventListener('click', function() {
+        let request = _api_request('http://api.icndb.com/jokes/random');
+
+        // The response of the "Internet Chuck Norris Database"
+        // has a key called "value", under that another key, called "joke"
+        request.then((response) => alert(response.value.joke));
+    });
 }
