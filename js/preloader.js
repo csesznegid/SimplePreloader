@@ -58,4 +58,34 @@ window.onload = function() {
             document.querySelector('#preloader')
         );
     }
+
+    /**
+     * Send Request
+     *
+     * @param   {String} url
+     * @param   {*} data
+     * @param   {String} method
+     * @returns {Promise<any>}
+     * @async
+     * @private
+     */
+    async function _api_request(url, data = null, method = 'GET')
+    {
+        // Start the Request with a preloader
+        addPreloader();
+
+        let responseData;
+
+        // Send the Request
+        let response = await fetch(url, {
+            method: method,
+            body:   data,
+        });
+        responseData = await response.json();
+
+        // When the Response is ready, remove the preloader
+        removePreloader();
+
+        return responseData;
+    }
 }
